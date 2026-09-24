@@ -66,5 +66,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Ev Bütçe Takip verilerinize güvenli erişim için Face ID doğrulaması kullanılır.</string>
 </dict>
 </plist>
