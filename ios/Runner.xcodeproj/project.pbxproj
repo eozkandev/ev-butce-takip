@@ -568,6 +568,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				DEVELOPMENT_TEAM = 5A6B7C8D9E;
+				CODE_SIGN_STYLE = Manual;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evbutce.evButceTakip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -590,6 +592,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				DEVELOPMENT_TEAM = 5A6B7C8D9E;
+				CODE_SIGN_STYLE = Manual;
 				PRODUCT_BUNDLE_IDENTIFIER = com.evbutce.evButceTakip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
