@@ -23,16 +23,25 @@ jobs:
       - name: Install Dependencies
         run: flutter pub get
 
-      - name: Build iOS Application (Unsigned IPA)
+      - name: Prepare Flutter iOS Config
+        run: flutter build ios --config-only
+
+      - name: Compile iOS Archive with Xcode
         run: |
-          flutter build ios --release --no-codesign
+          xcodebuild -workspace ios/Runner.xcworkspace \
+            -scheme Runner \
+            -configuration Release \
+            -destination "generic/platform=iOS" \
+            -archivePath "$PWD/build/Runner.xcarchive" \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            archive
 
       - name: Package IPA
         run: |
-          APP_PATH=$(find build/ios -name "Runner.app" -type d | head -n 1)
-          echo "Found app at: $APP_PATH"
           mkdir -p Payload
-          cp -r "$APP_PATH" Payload/
+          cp -r "$PWD/build/Runner.xcarchive/Products/Applications/Runner.app" Payload/
           zip -r -q ev_butce_takip.ipa Payload
           rm -rf Payload
 
