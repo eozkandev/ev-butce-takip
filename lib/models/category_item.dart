@@ -25,12 +25,21 @@ class CategoryItem {
         'type': type.name,
       };
 
+  static IconData getIconFromCode(int? code) {
+    if (code == null) return Icons.category_rounded;
+    for (final cat in [...defaultExpenseCategories, ...defaultIncomeCategories]) {
+      if (cat.icon.codePoint == code) {
+        return cat.icon;
+      }
+    }
+    return Icons.category_rounded;
+  }
+
   factory CategoryItem.fromJson(Map<String, dynamic> json) {
     return CategoryItem(
       id: json['id'] as String,
       name: json['name'] as String,
-      // ignore: non_const_argument_for_const_parameter
-      icon: IconData(json['iconCode'] as int, fontFamily: 'MaterialIcons'),
+      icon: getIconFromCode(json['iconCode'] as int?),
       color: Color(json['colorValue'] as int),
       type: json['type'] == 'income'
           ? TransactionType.income

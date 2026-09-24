@@ -25,7 +25,7 @@ jobs:
 
       - name: Build iOS Application (Unsigned IPA)
         run: |
-          flutter build ios --release --no-codesign
+          flutter build ios --release --no-codesign --no-tree-shake-icons
           APP_PATH=$(find build/ios -name "Runner.app" -type d | head -n 1)
           echo "Found compiled app at: $APP_PATH"
           mkdir -p Payload
