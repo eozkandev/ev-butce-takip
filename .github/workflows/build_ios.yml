@@ -23,19 +23,11 @@ jobs:
       - name: Install Dependencies
         run: flutter pub get
 
-      - name: Install CocoaPods
-        run: |
-          cd ios
-          pod install --repo-update
-          cd ..
-
       - name: Build iOS Application (Unsigned IPA)
         run: |
           flutter build ios --release --no-codesign
-          APP_PATH=$(find build/ios -name "Runner.app" -type d | head -n 1)
-          echo "Found app at: $APP_PATH"
           mkdir -p Payload
-          cp -r "$APP_PATH" Payload/
+          cp -r build/ios/iphoneos/Runner.app Payload/
           zip -r -q ev_butce_takip.ipa Payload
           rm -rf Payload
 
